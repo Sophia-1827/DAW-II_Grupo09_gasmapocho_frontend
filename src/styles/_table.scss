@@ -1,0 +1,44 @@
+/* Tabla del design system. Es global porque el <table> se proyecta dentro de gm-table-card
+   y la encapsulación de Angular no alcanza al contenido proyectado. Todo sale de tokens. */
+.gm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--gm-text-md);
+}
+.gm-table th {
+  padding: var(--gm-space-4);
+  background: var(--gm-surface-subtle);
+  border-top: 1px solid var(--gm-line);
+  border-bottom: 1px solid var(--gm-line);
+  text-align: left;
+  font-size: var(--gm-text-sm);
+  font-weight: var(--gm-weight-bold);
+  color: var(--gm-ink);
+  white-space: nowrap;
+}
+.gm-table td {
+  padding: var(--gm-space-5) var(--gm-space-4);
+  border-bottom: 1px solid var(--gm-line);
+  vertical-align: middle;
+  color: var(--gm-ink);
+}
+.gm-table tbody tr { transition: background-color var(--gm-duration) var(--gm-ease); }
+.gm-table tbody tr:hover { background: var(--gm-surface-hover); }
+.gm-table tbody tr.is-selected { background: var(--gm-surface-selected); }
+.gm-table tbody tr:last-child td { border-bottom: 0; }
+
+.gm-table .cell-code { font-weight: var(--gm-weight-bold); white-space: nowrap; }
+.gm-table .cell-muted { color: var(--gm-ink-muted); }
+.gm-table .cell-num { text-align: right; font-weight: var(--gm-weight-bold); white-space: nowrap; }
+.gm-table .cell-right { text-align: right; }
+.gm-table .cell-stock { text-align: right; line-height: var(--gm-leading-tight); }
+.gm-table .cell-stock .stock__n { display: block; font-size: var(--gm-text-lg); color: var(--gm-ink); }
+.gm-table .cell-stock .stock__state { display: block; margin-top: var(--gm-space-1); font-size: var(--gm-text-sm); color: var(--gm-ink-muted); }
+.gm-table .cell-actions { text-align: right; white-space: nowrap; }
+.gm-table .cell-actions > * + * { margin-left: var(--gm-space-2); }
+
+@media (max-width: 639px) {
+  /* La tabla no se comprime: mantiene el ancho y se desplaza dentro de gm-table-card */
+  .gm-table th, .gm-table td { padding: var(--gm-space-3); white-space: nowrap; }
+  .gm-table .cell-stock .stock__n { font-size: var(--gm-text-md); }
+}

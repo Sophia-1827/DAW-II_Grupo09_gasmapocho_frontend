@@ -1,0 +1,38 @@
+/* Base global: reset mínimo y tipografía del documento. Todo sale de tokens. */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--gm-font-sans);
+  font-size: var(--gm-text-md);
+  line-height: var(--gm-leading-body);
+  color: var(--gm-ink);
+  background: var(--gm-surface-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--gm-font-display); letter-spacing: var(--gm-tracking-display); }
+
+a {
+  color: var(--gm-primary);
+  text-decoration: none;
+  transition: color var(--gm-duration) var(--gm-ease);
+}
+a:hover { color: var(--gm-primary-hover); text-decoration: underline; }
+
+button, input { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--gm-focus-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0ms !important; }
+}

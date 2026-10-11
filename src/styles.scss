@@ -1,0 +1,5 @@
+/* Estilos globales: tokens primero, base y tabla después. Los componentes solo consumen var(--gm-*). */
+@use './styles/tokens';
+@use './styles/base';
+@use './styles/table';
+@use './styles/forms';

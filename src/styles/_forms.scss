@@ -1,0 +1,38 @@
+/* Formularios del design system. Globales porque los controles nativos viven en las páginas. */
+.gm-form { display: grid; gap: var(--gm-space-4); }
+.gm-form__grid { display: grid; gap: var(--gm-space-4); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.gm-form__actions { display: flex; gap: var(--gm-space-3); justify-content: flex-end; padding-top: var(--gm-space-2); }
+
+.gm-field { display: grid; gap: var(--gm-space-2); }
+.gm-field > span { font-size: var(--gm-text-sm); font-weight: var(--gm-weight-semibold); }
+.gm-field .hint { font-size: var(--gm-text-xs); color: var(--gm-ink-muted); }
+.gm-field .error { font-size: var(--gm-text-xs); color: var(--gm-danger); }
+
+.gm-input,
+.gm-select,
+.gm-textarea {
+  width: 100%;
+  min-height: var(--gm-control-height);
+  padding: 0 var(--gm-space-4);
+  border: 1px solid var(--gm-line-strong);
+  border-radius: var(--gm-radius-sm);
+  background: var(--gm-surface-subtle);
+  color: var(--gm-ink);
+  font: inherit;
+  transition: border-color var(--gm-duration) var(--gm-ease), background-color var(--gm-duration) var(--gm-ease);
+}
+.gm-textarea { min-height: 96px; padding: var(--gm-space-3) var(--gm-space-4); resize: vertical; }
+.gm-input::placeholder, .gm-textarea::placeholder { color: var(--gm-ink-faint); }
+.gm-input:hover, .gm-select:hover, .gm-textarea:hover { border-color: var(--gm-ink-muted); }
+.gm-input:focus, .gm-select:focus, .gm-textarea:focus { border-color: var(--gm-primary); background: var(--gm-surface-card); outline: none; }
+.gm-input[aria-invalid="true"], .gm-select[aria-invalid="true"] { border-color: var(--gm-danger); }
+.gm-input:disabled, .gm-select:disabled { color: var(--gm-ink-faint); cursor: not-allowed; }
+
+.gm-check { display: inline-flex; align-items: center; gap: var(--gm-space-2); font-size: var(--gm-text-sm); }
+.gm-check input { width: 18px; height: 18px; accent-color: var(--gm-primary); }
+
+.gm-card { padding: var(--gm-space-6); background: var(--gm-surface-card); border-radius: var(--gm-radius-md); box-shadow: var(--gm-shadow-card); }
+.gm-card--narrow { max-width: 720px; }
+
+/* Estados dentro de tablas */
+.gm-table .row-state td { text-align: center; color: var(--gm-ink-muted); padding: var(--gm-space-6); }

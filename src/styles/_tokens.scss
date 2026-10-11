@@ -1,0 +1,98 @@
+/* ============================================================================
+   Design system gas-mapocho - TOKENS (v2, panel claro)
+   Única fuente de color, tipografía, radios, espaciado y motion.
+   Regla: ningún componente declara un hex, un font-size ni un radio literal.
+   Si un valor no existe aquí, se agrega aquí (con su motivo), no en el componente.
+   Una sola app para ambos roles; el bloque "Acento de rol" queda reservado por si la UI vuelve a distinguirlos.
+   ========================================================================== */
+:root {
+  /* --- Superficies ------------------------------------------------------- */
+  --gm-surface-page: #f7f9fb;       /* casi blanco: deja que las tarjetas blancas se recorten */
+  --gm-surface-card: #ffffff;
+  --gm-surface-subtle: #f4f6f8;     /* cabecera de tabla, zonas secundarias */
+  --gm-surface-hover: #f9fbfc;      /* fila de tabla al pasar el cursor */
+  --gm-surface-selected: #eaf7fc;   /* fila seleccionada / ítem de menú activo */
+
+  /* --- Tinta ------------------------------------------------------------- */
+  --gm-ink: #1c2a38;
+  --gm-ink-muted: #5f6c7b;          /* 5.6:1 sobre blanco, AA en texto normal */
+  --gm-ink-faint: #97a1ad;          /* placeholders y texto deshabilitado */
+  --gm-ink-on-primary: #ffffff;     /* 4.8:1 sobre primary, AA */
+
+  /* --- Líneas ------------------------------------------------------------ */
+  --gm-line: #e5e9ee;
+  --gm-line-strong: #c9d1da;
+
+  /* --- Primario (acción principal en toda la suite) ---------------------- */
+  --gm-primary: #0b78b4;
+  --gm-primary-hover: #095f8f;
+  --gm-primary-soft: #e3f2fa;
+
+  /* --- Semánticos -------------------------------------------------------- */
+  --gm-danger: #d33a3f;             /* solo eliminar */
+  --gm-danger-soft: #fcebec;
+  --gm-success: #1e8e5a;
+  --gm-success-soft: #e5f5ec;
+  --gm-warning: #b7791f;
+  --gm-warning-soft: #fdf3df;
+  --gm-info: #3b5bdb;
+  --gm-info-soft: #e8ecfb;
+  --gm-focus-ring: #4ea1d9;
+
+  /* --- Acento de rol (reservado, hoy sin consumidor) --------------------- */
+  --gm-role-accent: #5b4fd6;
+  --gm-role-accent-hover: #483dbb;
+  --gm-role-accent-soft: #ebe8fb;
+  --gm-ink-on-role-accent: #ffffff;
+
+  /* --- Tipografía -------------------------------------------------------- */
+  --gm-font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;   /* títulos */
+  --gm-font-sans: "Nunito Sans", "Segoe UI", system-ui, sans-serif;     /* cuerpo e interfaz */
+  --gm-font-mono: "Cascadia Code", Consolas, monospace;
+  --gm-text-xs: 0.75rem;
+  --gm-text-sm: 0.875rem;
+  --gm-text-md: 1rem;
+  --gm-text-lg: 1.125rem;
+  --gm-text-xl: 1.5rem;
+  --gm-text-display: 2rem;
+  --gm-weight-regular: 400;
+  --gm-weight-semibold: 600;
+  --gm-weight-bold: 700;
+  --gm-leading-tight: 1.2;
+  --gm-leading-body: 1.5;
+  --gm-tracking-display: -0.01em;
+
+  /* --- Geometría --------------------------------------------------------- */
+  --gm-radius-sm: 6px;
+  --gm-radius-md: 10px;
+  --gm-radius-lg: 14px;
+  --gm-radius-pill: 999px;
+  --gm-space-1: 4px;
+  --gm-space-2: 8px;
+  --gm-space-3: 12px;
+  --gm-space-4: 16px;
+  --gm-space-5: 24px;
+  --gm-space-6: 32px;
+  --gm-space-7: 48px;
+  --gm-gutter: 32px;                /* se reduce por media query más abajo */
+  --gm-header-height: 64px;
+  --gm-sidenav-width: 240px;
+  --gm-content-max: 1200px;
+  --gm-control-height: 44px;        /* inputs y botones comparten alto */
+
+  /* --- Sombra y motion --------------------------------------------------- */
+  --gm-shadow-card: 0 1px 2px rgba(28, 42, 56, 0.06), 0 6px 20px rgba(28, 42, 56, 0.06);
+  --gm-duration: 140ms;
+  --gm-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (max-width: 1023px) {
+  :root { --gm-gutter: 24px; }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --gm-gutter: 16px;
+    --gm-text-display: 1.625rem;
+  }
+}

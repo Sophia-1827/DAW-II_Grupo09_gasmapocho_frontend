@@ -16,6 +16,29 @@ export interface BalonRequest {
   stockMinimo: number;
 }
 
+export interface Proveedor {
+  id: number;
+  nombre: string;
+  rut: string;
+  telefono: string;
+  direccion: string;
+  region: string;
+  activo: boolean;
+}
+
+export type ProveedorRequest = Omit<Proveedor, 'id' | 'activo'>;
+
+export interface Cliente {
+  id: number;
+  nombre: string;
+  rut: string;
+  direccion: string;
+  telefono: string;
+  activo: boolean;
+}
+
+export type ClienteRequest = Omit<Cliente, 'id' | 'activo'>;
+
 export type TipoMovimiento = 'ENTRADA' | 'SALIDA';
 
 export interface Movimiento {

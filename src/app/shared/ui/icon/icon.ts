@@ -4,7 +4,7 @@ import { Component, computed, input } from '@angular/core';
 export type IconName =
   | 'home' | 'cylinder' | 'swap' | 'users' | 'chart'
   | 'plus' | 'search' | 'pencil' | 'trash' | 'download' | 'logout'
-  | 'arrow-in' | 'arrow-out';
+  | 'arrow-in' | 'arrow-out' | 'truck' | 'contact' | 'cart' | 'check' | 'ban' | 'power';
 
 const PATHS: Record<IconName, string> = {
   home: 'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
@@ -20,6 +20,12 @@ const PATHS: Record<IconName, string> = {
   logout: 'M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9',
   'arrow-in': 'M12 3v13m0 0-4-4m4 4 4-4M5 21h14',
   'arrow-out': 'M12 21V8m0 0-4 4m4-4 4 4M5 3h14',
+  truck: 'M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  contact: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',
+  cart: 'M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM20 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6',
+  check: 'M20 6 9 17l-5-5',
+  ban: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM4.9 4.9l14.2 14.2',
+  power: 'M18.4 6.6a9 9 0 1 1-12.8 0M12 2v10',
 };
 
 @Component({

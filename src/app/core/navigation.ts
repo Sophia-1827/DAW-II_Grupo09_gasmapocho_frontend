@@ -21,6 +21,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { path: 'balones', label: 'Balones', icon: 'cylinder', roles: TODOS },
   { path: 'proveedores', label: 'Proveedores', icon: 'truck', roles: TODOS },
   { path: 'clientes', label: 'Clientes', icon: 'contact', roles: TODOS },
+  { path: 'compras', label: 'Compras', icon: 'cart', roles: TODOS },
   { path: 'movimientos', label: 'Movimientos', icon: 'swap', roles: TODOS },
   { path: 'reportes', label: 'Reportes', icon: 'chart', roles: SOLO_ADMIN },
 ];

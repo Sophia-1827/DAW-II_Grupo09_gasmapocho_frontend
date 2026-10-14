@@ -95,10 +95,12 @@ export class InicioPage {
   // Indicadores calculados a partir de las listas que ya expone la API
   protected readonly totalStock = computed(() => this.balones().reduce((s, b) => s + b.stock, 0));
   protected readonly bajoMinimo = computed(() => this.balones().filter((b) => b.stock <= b.stockMinimo).map((b) => b.codigo));
-  protected readonly hoy = computed(() => this.movimientos().filter((m) => esHoy(m.fecha)));
+  // Un movimiento anulado ya no afecta el stock, así que no cuenta ni aparece entre los recientes.
+  private readonly vigentes = computed(() => this.movimientos().filter((m) => m.estado !== 'ANULADO'));
+  protected readonly hoy = computed(() => this.vigentes().filter((m) => esHoy(m.fecha)));
   protected readonly entradasHoy = computed(() => this.hoy().filter((m) => m.tipo === 'ENTRADA').length);
   protected readonly salidasHoy = computed(() => this.hoy().filter((m) => m.tipo === 'SALIDA').length);
-  protected readonly recientes = computed(() => this.movimientos().slice(0, 5));
+  protected readonly recientes = computed(() => this.vigentes().slice(0, 5));
 
   constructor() {
     const fallo = (err: unknown) => { this.error.set(mensajeDeError(err)); this.cargando.set(false); };

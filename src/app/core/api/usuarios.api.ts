@@ -13,5 +13,7 @@ export class UsuariosApi {
   obtener(id: number): Observable<Usuario> { return this.http.get<Usuario>(`${this.base}/${id}`); }
   crear(body: UsuarioRequest): Observable<Usuario> { return this.http.post<Usuario>(this.base, body); }
   actualizar(id: number, body: UsuarioRequest): Observable<Usuario> { return this.http.put<Usuario>(`${this.base}/${id}`, body); }
+  /** Alterna activo/inactivo. Un usuario inactivo no puede iniciar sesión; un ADMIN no puede desactivarse a sí mismo. */
+  cambiarEstado(id: number): Observable<Usuario> { return this.http.patch<Usuario>(`${this.base}/${id}/estado`, null); }
   eliminar(id: number): Observable<void> { return this.http.delete<void>(`${this.base}/${id}`); }
 }

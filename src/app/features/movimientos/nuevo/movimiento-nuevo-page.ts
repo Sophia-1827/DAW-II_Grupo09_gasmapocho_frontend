@@ -25,7 +25,7 @@ const NUEVO = 'nuevo';
   selector: 'gm-movimiento-nuevo-page',
   imports: [ReactiveFormsModule, RouterLink, Alert, Button, PageHeader, ClienteCampos],
   template: `
-    <gm-page-header title="Registrar movimiento" subtitle="La entrada suma stock y la salida lo descuenta en ms-balones" />
+    <gm-page-header title="Registrar movimiento" subtitle="La entrada suma stock y la salida lo descuenta del inventario" />
 
     <form class="gm-card gm-card--narrow gm-form" [formGroup]="form" (ngSubmit)="guardar()" novalidate>
       @if (error(); as e) {

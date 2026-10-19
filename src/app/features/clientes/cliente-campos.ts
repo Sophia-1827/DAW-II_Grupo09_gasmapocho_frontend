@@ -14,7 +14,7 @@ export function crearGrupoCliente(fb: FormBuilder): ClienteGroup {
     nombre: ['', [Validators.required, Validators.maxLength(100)]],
     rut: ['', [Validators.required, Validators.maxLength(15)]],
     direccion: ['', [Validators.required, Validators.maxLength(150)]],
-    telefono: ['', [Validators.required, Validators.maxLength(20)]],
+    telefono: ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/^\+?[0-9 ]{7,20}$/)]],
   });
 }
 
@@ -40,7 +40,7 @@ export function crearGrupoCliente(fb: FormBuilder): ClienteGroup {
         <label class="gm-field">
           <span>Teléfono</span>
           <input class="gm-input" type="text" formControlName="telefono" maxlength="20" placeholder="+56 9 1234 5678" [attr.aria-invalid]="invalido('telefono')" />
-          @if (invalido('telefono')) { <span class="error">El teléfono es obligatorio.</span> }
+          @if (invalido('telefono')) { <span class="error">{{ group().controls.telefono.hasError('required') ? 'El teléfono es obligatorio.' : 'Solo se permiten números, espacios y +.' }}</span> }
         </label>
         <label class="gm-field">
           <span>Dirección de entrega</span>

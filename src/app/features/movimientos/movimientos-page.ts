@@ -164,7 +164,7 @@ export class MovimientosPage {
     const enc = (v: unknown) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
     const filas = [
       ['Folio', 'Fecha', 'Tipo', 'Estado', 'Balón', 'Nombre', 'Cantidad', 'Precio unitario', 'Proveedor', 'Cliente', 'Dirección', 'Responsable', 'Observación'].map(enc).join(';'),
-      ...this.todos().map((m) => [m.folio, m.fecha, m.tipo, m.estado, m.balonCodigo, m.balonNombre, m.cantidad, m.precioUnitario, m.proveedorNombre, m.clienteNombre, m.clienteDireccion, m.responsable, m.observacion].map(enc).join(';')),
+      ...this.todos().map((m) => [m.folio, this.fecha(m.fecha), m.tipo, m.estado, m.balonCodigo, m.balonNombre, m.cantidad, m.precioUnitario, m.proveedorNombre, m.clienteNombre, m.clienteDireccion, m.responsable, m.observacion].map(enc).join(';')),
     ];
     const blob = new Blob(['﻿' + filas.join('\n')], { type: 'text/csv;charset=utf-8' });
     const a = document.createElement('a');

@@ -6,8 +6,7 @@
 }
 .wrap { display: grid; gap: var(--gm-space-5); width: min(100%, 440px); }
 
-.brand { display: flex; align-items: center; justify-content: center; }
-.brand__logo { display: block; height: 56px; width: auto; }
+.brand__logo { display: block; height: 56px; width: auto; margin-bottom: var(--gm-space-2); }
 
 .card {
   display: grid;
@@ -17,9 +16,9 @@
   border-radius: var(--gm-radius-md);
   box-shadow: var(--gm-shadow-card);
 }
-.card__head { display: grid; gap: var(--gm-space-2); margin-bottom: var(--gm-space-2); }
+.card__head { display: grid; justify-items: center; gap: var(--gm-space-2); margin-bottom: var(--gm-space-2); text-align: center; }
+.card__divider { justify-self: stretch; height: 0; margin: var(--gm-space-2) 0; border: 0; border-top: 1px solid var(--gm-line); }
 h1 { font-size: var(--gm-text-xl); font-weight: var(--gm-weight-bold); line-height: var(--gm-leading-tight); }
-.card__head p { color: var(--gm-ink-muted); }
 
 .field { display: grid; gap: var(--gm-space-2); }
 .field span { font-size: var(--gm-text-sm); font-weight: var(--gm-weight-semibold); }
@@ -36,28 +35,3 @@ h1 { font-size: var(--gm-text-xl); font-weight: var(--gm-weight-bold); line-heig
 .field input:focus { border-color: var(--gm-primary); background: var(--gm-surface-card); outline: none; }
 .field input[aria-invalid="true"] { border-color: var(--gm-danger); }
 
-/* Cuentas de prueba (solo desarrollo) */
-.demo {
-  display: grid;
-  gap: var(--gm-space-2);
-  padding-top: var(--gm-space-3);
-  border-top: 1px solid var(--gm-line);
-}
-.demo__title { font-size: var(--gm-text-xs); font-weight: var(--gm-weight-semibold); color: var(--gm-ink-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.demo__item {
-  display: flex;
-  align-items: center;
-  gap: var(--gm-space-2);
-  padding: var(--gm-space-2) var(--gm-space-3);
-  border: 1px solid var(--gm-line);
-  border-radius: var(--gm-radius-sm);
-  background: var(--gm-surface-subtle);
-  color: var(--gm-ink-muted);
-  font-size: var(--gm-text-sm);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color var(--gm-duration) var(--gm-ease), background-color var(--gm-duration) var(--gm-ease);
-}
-.demo__item:hover { border-color: var(--gm-primary); background: var(--gm-surface-card); }
-.demo__rol { min-width: 72px; font-weight: var(--gm-weight-bold); color: var(--gm-ink); }
-.demo__item code { font-family: var(--gm-font-mono); color: var(--gm-ink); }

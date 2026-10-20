@@ -1,12 +1,9 @@
 <div class="wrap">
-  <header class="brand">
-    <img class="brand__logo" src="logo-gasco.webp" alt="Gasco" width="457" height="112" />
-  </header>
-
   <form class="card" [formGroup]="form" (ngSubmit)="ingresar()" novalidate>
     <div class="card__head">
-      <h1>Ingresar</h1>
-      <p>Inventario de balones de gas. Tu rol define las secciones que verás.</p>
+      <img class="brand__logo" src="logo-gasco.webp" alt="Gasco" width="457" height="112" />
+      <hr class="card__divider" />
+      <h1>Iniciar Sesión</h1>
     </div>
 
     @if (error(); as e) {
@@ -24,16 +21,6 @@
              [attr.aria-invalid]="form.controls.password.touched && form.controls.password.invalid" />
     </label>
 
-    <button gm-button block type="submit" [disabled]="enviando()">{{ enviando() ? 'Ingresando...' : 'Ingresar' }}</button>
-
-    <div class="demo">
-      <span class="demo__title">Cuentas de prueba</span>
-      @for (d of demo; track d.email) {
-        <button type="button" class="demo__item" (click)="usarDemo(d.email, d.clave)">
-          <span class="demo__rol">{{ d.rol }}</span>
-          <code>{{ d.email }}</code> / <code>{{ d.clave }}</code>
-        </button>
-      }
-    </div>
+    <button gm-button block type="submit" [disabled]="enviando()">{{ enviando() ? 'Iniciando sesión...' : 'Iniciar Sesión' }}</button>
   </form>
 </div>

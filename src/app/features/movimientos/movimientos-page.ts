@@ -24,12 +24,8 @@ const TAMANO = 5;
   imports: [RouterLink, Alert, Badge, Button, Icon, PageHeader, TableCard],
   template: `
     <gm-page-header title="Movimientos"
-      [subtitle]="auth.esAdmin() ? 'Supervisa, corrige y anula las entradas y salidas de balones' : 'Registra y revisa las entradas y salidas del almacén'">
-      @if (auth.esAdmin()) {
-        <button gm-button variant="secondary" type="button" (click)="exportar()"><gm-icon name="download" [size]="18" />Exportar CSV</button>
-      }
-      <a gm-button variant="secondary" routerLink="/app/compras/nueva"><gm-icon name="arrow-in" [size]="18" />Nueva compra</a>
-      <a gm-button routerLink="/app/movimientos/nuevo" [queryParams]="{ tipo: 'SALIDA' }"><gm-icon name="arrow-out" [size]="18" />Nueva venta</a>
+      [subtitle]="auth.esAdmin() ? 'Revisa el historial de entradas y salidas de balones y gestiona su estado' : 'Registra y revisa las entradas y salidas del almacén'">
+      <a gm-button routerLink="/app/movimientos/nuevo"><gm-icon name="swap" [size]="18" />Registrar movimiento</a>
     </gm-page-header>
 
     @if (mensaje(); as m) {
@@ -157,20 +153,5 @@ export class MovimientosPage {
       next: (rows) => { this.todos.set(rows); this.cargando.set(false); },
       error: (err: unknown) => { this.mensaje.set({ tone: 'error', texto: mensajeDeError(err) }); this.cargando.set(false); },
     });
-  }
-
-  /** Descarga todo el historial como CSV. */
-  protected exportar(): void {
-    const enc = (v: unknown) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
-    const filas = [
-      ['Folio', 'Fecha', 'Tipo', 'Estado', 'Balón', 'Nombre', 'Cantidad', 'Precio unitario', 'Proveedor', 'Cliente', 'Dirección', 'Responsable', 'Observación'].map(enc).join(';'),
-      ...this.todos().map((m) => [m.folio, m.fecha, m.tipo, m.estado, m.balonCodigo, m.balonNombre, m.cantidad, m.precioUnitario, m.proveedorNombre, m.clienteNombre, m.clienteDireccion, m.responsable, m.observacion].map(enc).join(';')),
-    ];
-    const blob = new Blob(['﻿' + filas.join('\n')], { type: 'text/csv;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `movimientos-${new Date().toISOString().slice(0, 10)}.csv`;
-    a.click();
-    URL.revokeObjectURL(a.href);
   }
 }

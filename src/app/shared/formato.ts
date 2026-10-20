@@ -22,3 +22,8 @@ export function esHoy(iso: string): boolean {
   const h = new Date();
   return d.getFullYear() === h.getFullYear() && d.getMonth() === h.getMonth() && d.getDate() === h.getDate();
 }
+
+/** Corrige la tilde de "balón" en nombres que vienen sin ella desde la base de datos. */
+export function conTilde(texto: string | null | undefined): string {
+  return (texto ?? '').replace(/\bbalon\b/g, 'balón').replace(/\bBalon\b/g, 'Balón').replace(/\bBALON\b/g, 'BALÓN');
+}

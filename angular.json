@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": false
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -35,6 +36,9 @@
               "node_modules/@fontsource/nunito-sans/600.css",
               "node_modules/@fontsource/nunito-sans/700.css",
               "src/styles.scss"
+            ],
+            "allowedCommonJsDependencies": [
+              "exceljs"
             ]
           },
           "configurations": {

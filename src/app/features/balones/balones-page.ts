@@ -4,7 +4,7 @@ import { mensajeDeError } from '../../core/api/api-error';
 import { BalonesApi } from '../../core/api/balones.api';
 import { Balon } from '../../core/api/models';
 import { AuthService } from '../../core/auth/auth.service';
-import { estadoStock, pesos } from '../../shared/formato';
+import { conTilde, estadoStock, pesos } from '../../shared/formato';
 import { Alert } from '../../shared/ui/alert/alert';
 import { Button } from '../../shared/ui/button/button';
 import { Icon } from '../../shared/ui/icon/icon';
@@ -55,7 +55,7 @@ const TAMANO = 5;
           @for (row of paginaActual(); track row.id) {
             <tr>
               <td class="cell-code">{{ row.codigo }}</td>
-              <td class="cell-muted">{{ row.nombre }}</td>
+              <td class="cell-muted">{{ conTilde(row.nombre) }}</td>
               <td class="cell-num">{{ pesos(row.precio) }}</td>
               <td class="cell-stock">
                 <span class="stock__n">{{ row.stock }}</span>
@@ -84,6 +84,7 @@ export class BalonesPage {
 
   protected readonly tamano = TAMANO;
   protected readonly pesos = pesos;
+  protected readonly conTilde = conTilde;
   protected readonly estadoStock = estadoStock;
   protected readonly columnas = computed(() => (this.auth.esAdmin() ? 5 : 4));
   protected readonly todos = signal<Balon[]>([]);

@@ -7,7 +7,7 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: 'login',
-    title: 'Ingresar | Gas Mapocho',
+    title: 'Iniciar Sesión | Gas Mapocho',
     loadComponent: () => import('./features/auth/login/login-page').then((m) => m.LoginPage),
   },
   {

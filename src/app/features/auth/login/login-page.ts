@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { APP_NAME, DEMO_USUARIOS } from '../../../core/app-config';
+import { APP_NAME } from '../../../core/app-config';
 import { mensajeDeError } from '../../../core/api/api-error';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Alert } from '../../../shared/ui/alert/alert';
@@ -20,7 +20,6 @@ export class LoginPage {
   private readonly router = inject(Router);
 
   protected readonly appName = APP_NAME;
-  protected readonly demo = DEMO_USUARIOS;
   protected readonly enviando = signal(false);
   protected readonly error = signal<string | null>(null);
 
@@ -44,10 +43,5 @@ export class LoginPage {
         this.enviando.set(false);
       },
     });
-  }
-
-  /** Rellena el formulario con una cuenta de prueba (solo desarrollo). */
-  protected usarDemo(email: string, clave: string): void {
-    this.form.setValue({ email, password: clave });
   }
 }

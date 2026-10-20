@@ -6,6 +6,7 @@ import { Button } from '../../shared/ui/button/button';
 import { Icon } from '../../shared/ui/icon/icon';
 import { PageHeader } from '../../shared/ui/page-header/page-header';
 import { TableCard } from '../../shared/ui/table-card/table-card';
+import { environment } from '../../../environments/environment';
 
 /** Reportes de ms-reportes. "Generar" ejecuta el reporte y descarga el resultado en JSON. */
 @Component({
@@ -47,7 +48,7 @@ import { TableCard } from '../../shared/ui/table-card/table-card';
         </tbody>
       </table>
     </gm-table-card>
-    <p class="nota">El stock actual también se expone por SOAP: <code>http://localhost:8080/ws/reportes?wsdl</code>.</p>
+    <p class="nota">El stock actual también se expone por SOAP: <a [href]="wsdlUrl" target="_blank" rel="noopener"><code>{{ wsdlUrl }}</code></a>.</p>
   `,
   styles: `
     .name { display: block; font-weight: var(--gm-weight-bold); }
@@ -56,12 +57,14 @@ import { TableCard } from '../../shared/ui/table-card/table-card';
     gm-alert { display: block; margin-bottom: var(--gm-space-4); }
     .nota { margin-top: var(--gm-space-4); color: var(--gm-ink-muted); font-size: var(--gm-text-sm); }
     .nota code { font-family: var(--gm-font-mono); }
+    .nota a { color: inherit; }
   `,
 })
 export class ReportesPage {
   private readonly api = inject(ReportesApi);
 
   protected readonly reportes = REPORTES;
+  protected readonly wsdlUrl = `${environment.apiUrl}/ws/reportes?wsdl`;
   protected readonly generando = signal<string | null>(null);
   protected readonly mensaje = signal<{ tone: 'error' | 'success'; texto: string } | null>(null);
 
